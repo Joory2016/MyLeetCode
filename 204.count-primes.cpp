@@ -3,6 +3,7 @@
  *
  * [204] Count Primes
  */
+/* 
 class Solution
 {
 public:
@@ -32,4 +33,46 @@ private:
         }
         return true;
     }
+    
+
+};*/
+
+class Solution
+{
+public:
+    int countPrimes(int n)
+    {
+        int count = 0;
+        for (int i = 1; i < n; i++)
+        {
+            if (isPrime(i))
+            {
+                ++count;
+                primes.push_back(i);
+            }
+        }
+        return count;
+    }
+
+private:
+    bool isPrime(int n)
+    {
+        if (n < 2)
+            return false;
+        if (n == 2)
+            return true;
+        int sq = sqrt(n);
+        int len = primes.size();
+        for (int index = 0; index < len; index++)
+        {
+            int temp = primes[index];
+            if (temp > sq)
+                break;
+            if (n % temp == 0)
+                return false;
+        }
+        return true;
+    }
+
+    vector<int> primes;
 };
