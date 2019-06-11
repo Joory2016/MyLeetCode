@@ -85,7 +85,7 @@ public:
     {
         if (n < 2)
             return 0;
-        bool *isPrime = new bool(n);
+        bool *isPrime = new bool[n];
         for (int i = 2; i < n; i++)
             isPrime[i] = true;
 
