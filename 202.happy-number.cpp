@@ -3,30 +3,9 @@
  *
  * [202] Happy Number
  */
+/* 
 class Solution
 {
-public:
-    /* 
-    bool isHappy(int n)
-    {
-        if (n == 1)
-            return true;
-        map<int, int> map_h;
-        int sum = 0;
-        while (sum != 1)
-        {
-            map_h.insert(pair<int, int>(n, n));
-            sum = countN(n);
-            if (sum == 1)
-                return true;
-            if (map_h.count(sum))
-                return false;
-            n = sum;
-        }
-        return true;
-    }
-*/
-
     bool isHappy(int n)
     {
         if (n == 1)
@@ -51,6 +30,39 @@ private:
     {
         int res = 0;
         while (n)
+        {
+            int temp = n % 10;
+            res = res + temp * temp;
+            n = n / 10;
+        }
+        return res;
+    }
+};
+*/
+class Solution
+{
+public:
+    bool isHappy(int n)
+    {
+        if (n == 1)
+            return true;
+        int slow = n, fast = n;
+        do
+        {
+            slow = countN(slow);
+            fast = countN(fast);
+            fast = countN(fast);
+            if (fast == 1)
+                return true;
+        } while (fast != slow);
+        return false;
+    }
+
+private:
+    int countN(int n)
+    {
+        int res = 0;
+        while (n != 0)
         {
             int temp = n % 10;
             res = res + temp * temp;
