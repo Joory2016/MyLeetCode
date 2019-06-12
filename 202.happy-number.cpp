@@ -6,6 +6,7 @@
 class Solution
 {
 public:
+    /* 
     bool isHappy(int n)
     {
         if (n == 1)
@@ -19,6 +20,26 @@ public:
             if (sum == 1)
                 return true;
             if (map_h.count(sum))
+                return false;
+            n = sum;
+        }
+        return true;
+    }
+*/
+
+    bool isHappy(int n)
+    {
+        if (n == 1)
+            return true;
+        int sum = 0;
+        set<int> s_sum;
+        while (sum != 1)
+        {
+            s_sum.insert(n);
+            sum = countN(n);
+            if (sum == 1)
+                return true;
+            if (s_sum.count(sum))
                 return false;
             n = sum;
         }
