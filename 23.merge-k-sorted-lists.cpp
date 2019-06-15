@@ -14,7 +14,7 @@
 
 bool myComp(ListNode *l1, ListNode *l2)
 {
-    return l1->val <= l2->val;
+    return l1->val < l2->val;
 }
 
 class Solution
@@ -43,3 +43,4 @@ public:
         return node_vec[0];
     }
 };
+
