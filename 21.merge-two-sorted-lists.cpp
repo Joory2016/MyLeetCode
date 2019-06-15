@@ -11,6 +11,7 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/* 
 class Solution
 {
 public:
@@ -34,5 +35,35 @@ public:
             res->next = mergeTwoLists(l1, l2->next);
         }
         return res;
+    }
+};
+
+*/
+class Solution
+{
+public:
+    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
+    {
+        ListNode temp_head(0);
+        ListNode *pre = &temp_head;
+        while (l1 != nullptr && l2 != nullptr)
+        {
+            if (l1->val <= l2->val)
+            {
+                pre->next = l1;
+                l1 = l1->next;
+            }
+            else
+            {
+                pre->next = l2;
+                l2 = l2->next;
+            }
+            pre = pre->next;
+        }
+        if (l1 != nullptr)
+            pre->next = l1;
+        if (l2 != nullptr)
+            pre->next = l2;
+        return temp_head.next;
     }
 };
